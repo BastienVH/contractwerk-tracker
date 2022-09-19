@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _models_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./models.js */ \"./src/models.js\");\n\n\nconsole.log('Welcome to the tracker');\n\nlet student1 = new _models_js__WEBPACK_IMPORTED_MODULE_0__.student('Franske');\nconsole.log(student1.name);\nconsole.log(student1.getTasks);\n\n//# sourceURL=webpack://contractwerk-tracker/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _models_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./models.js */ \"./src/models.js\");\n/* harmony import */ var _views_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./views.js */ \"./src/views.js\");\n\n\n\nconst body = document.querySelector('body');\n\n// Create a small list of students\nconst studentNames = ['Franske', 'Joske', 'Marietteje'];\nconst students = [];\n\nfor (const index in studentNames) {\n  students[index] = new _models_js__WEBPACK_IMPORTED_MODULE_0__.Student(studentNames[index]);\n}\n\nbody.appendChild((0,_views_js__WEBPACK_IMPORTED_MODULE_1__.webView)(students));\n\n\n\n//# sourceURL=webpack://contractwerk-tracker/./src/index.js?");
 
 /***/ }),
 
@@ -26,7 +26,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"student\": () => (/* binding */ student)\n/* harmony export */ });\nclass student {\n  constructor(name) {\n    this.name = name;\n  }\n  \n  #tasks = {\n    task1: 'waiting',\n    task2: 'waiting',\n    task3: 'waiting',\n    task4: 'waiting',\n    task5: 'waiting',\n    task6: 'waiting',\n    task7: 'waiting',\n    task8: 'waiting',\n    task9: 'waiting',\n    task10: 'waiting',\n  }\n\n  get getTasks() {\n    return this.#tasks;\n  }\n}\n\n\n\n//# sourceURL=webpack://contractwerk-tracker/./src/models.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Student\": () => (/* binding */ Student)\n/* harmony export */ });\nclass Student {\n  constructor(name) {\n    this.name = name;\n  }\n  \n  #tasks = {\n    task1: 'waiting',\n    task2: 'waiting',\n    task3: 'waiting',\n    task4: 'waiting',\n    task5: 'waiting',\n    task6: 'waiting',\n    task7: 'waiting',\n    task8: 'waiting',\n    task9: 'waiting',\n    task10: 'waiting',\n  }\n\n  get getTasks() {\n    return this.#tasks;\n  }\n}\n\n\n\n//# sourceURL=webpack://contractwerk-tracker/./src/models.js?");
+
+/***/ }),
+
+/***/ "./src/views.js":
+/*!**********************!*\
+  !*** ./src/views.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webView\": () => (/* binding */ webView)\n/* harmony export */ });\nfunction webView(students) {\n  // create table to display everything in\n  const table = document.createElement('table');\n\n  for (let student in students) {\n    let thead = document.createElement('th');\n    thead.textContent = students[student].name;\n\n    table.appendChild(thead);   \n    //  -put value of tasks on screen\n  }\n  return table;\n}\n\n\n\n//# sourceURL=webpack://contractwerk-tracker/./src/views.js?");
 
 /***/ })
 
