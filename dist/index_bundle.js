@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webView\": () => (/* binding */ webView)\n/* harmony export */ });\nfunction webView(students) {\n  // create table to display everything in\n  const table = document.createElement('table');\n\n  for (let student in students) {\n    let thead = document.createElement('th');\n    thead.textContent = students[student].name;\n\n    table.appendChild(thead);   \n    //  -put value of tasks on screen\n  }\n  return table;\n}\n\n\n\n//# sourceURL=webpack://contractwerk-tracker/./src/views.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"webView\": () => (/* binding */ webView)\n/* harmony export */ });\nfunction webView(students) {\n  // create table to display everything in\n  const table = document.createElement('table');\n  const tHeader = document.createElement('th');\n  const tHeaderRow = document.createElement('tr');\n  \n  //put names of students in table header\n  for (let student in students) {\n    const tdata = document.createElement('td');\n    tdata.textContent = students[student].name;\n    tHeaderRow.appendChild(tdata);   \n  }\n\n  //put header in table\n  tHeader.appendChild(tHeaderRow);\n  table.appendChild(tHeader);\n\n  return table;\n}\n\n\n\n//# sourceURL=webpack://contractwerk-tracker/./src/views.js?");
 
 /***/ })
 
