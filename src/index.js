@@ -12,4 +12,3 @@ for (const index in studentNames) {
 }
 
 body.appendChild(webView(students));
-
