@@ -1,0 +1,26 @@
+{
+  "name": "contractwerk-tracker",
+  "version": "1.0.0",
+  "description": "A web tool to track which students have completed which tasks over the course of self-study time.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BastienVH/contractwerk-tracker.git"
+  },
+  "author": "Bastien Van Houdt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BastienVH/contractwerk-tracker/issues"
+  },
+  "homepage": "https://github.com/BastienVH/contractwerk-tracker#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
