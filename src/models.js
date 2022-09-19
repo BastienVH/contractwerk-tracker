@@ -1,4 +1,4 @@
-class student {
+class Student {
   constructor(name) {
     this.name = name;
   }
@@ -21,4 +21,4 @@ class student {
   }
 }
 
-export { student };
+export { Student };

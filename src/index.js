@@ -1,7 +1,9 @@
-import { student } from './models.js';
+import { Student } from './models.js';
 
-console.log('Welcome to the tracker');
+// Create a small list of students
+const studentNames = ['Franske', 'Joske', 'Marietteje'];
+const students = [];
 
-let student1 = new student('Franske');
-console.log(student1.name);
-console.log(student1.getTasks);
+for (const index in studentNames) {
+  students[index] = new Student(studentNames[index]);
+}
