@@ -14,11 +14,12 @@ function webView(students) {
     tHeaderRow.appendChild(tHeaderCell);   
   }
   
+  // put content of each students tasks in table
   const tBody = document.createElement('tbody');
-  for (let task in students[0].getTasks) {
+  for (let task in students[0].tasks) {
     let row = document.createElement('tr');
     for (let student in students) {
-      let value = students[student].getTasks[task];
+      let value = students[student].tasks[task];
       let cell = document.createElement('td');
       cell.textContent = value;
       row.appendChild(cell);
