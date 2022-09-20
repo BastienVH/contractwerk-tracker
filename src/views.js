@@ -10,16 +10,6 @@ function webView(students) {
     tHeaderRow.appendChild(tHeader);   
   }
 
-  // put state of tasks in table rows:
-  //  - create a table body
-  //  - for every tasks in students[0].getTasks();^
-  //    - create a table row
-  //    - for every student
-  //      - get value of current task for this student
-  //      - add table data element with textContent for the value of the task for this student
-  //    - append this row to the table body
-  //  - append table body to table
-
   const tBody = document.createElement('tbody');
   for (let task in students[0].getTasks) {
     let row = document.createElement('tr');
