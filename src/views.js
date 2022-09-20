@@ -1,15 +1,19 @@
 function webView(students) {
-  // create table to display everything in
+
+  // create table with header row to display everything in
   const table = document.createElement('table');
+  const tHead = document.createElement('thead');
   const tHeaderRow = document.createElement('tr');
+  tHead.appendChild(tHeaderRow);
+  table.appendChild(tHead);
   
   //put names of students in table header
   for (let student in students) {
-    const tHeader = document.createElement('th');
-    tHeader.textContent = students[student].name;
-    tHeaderRow.appendChild(tHeader);   
+    const tHeaderCell = document.createElement('th');
+    tHeaderCell.textContent = students[student].name;
+    tHeaderRow.appendChild(tHeaderCell);   
   }
-
+  
   const tBody = document.createElement('tbody');
   for (let task in students[0].getTasks) {
     let row = document.createElement('tr');
@@ -22,8 +26,6 @@ function webView(students) {
     tBody.appendChild(row);
   }
 
-  //put header in table
-  table.appendChild(tHeaderRow);
   table.appendChild(tBody);
 
   return table;
