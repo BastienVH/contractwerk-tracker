@@ -11,4 +11,15 @@ module.exports = {
   plugins: [new HtmlWebpackPlugin({
     title: 'Contractwerk Tracker'
   })],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  }
 };

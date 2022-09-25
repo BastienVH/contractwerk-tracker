@@ -1,5 +1,6 @@
 import { Student } from './models.js';
 import { webView } from './views.js';
+import './styles.css';
 
 const body = document.querySelector('body');
 
