@@ -1,25 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 table {
   border: 2px solid black;
+  border-spacing: 12px;
+  font-family: 'Lato', sans-serif;
 }
 
 th {
   border-bottom: 1px solid black;
+  font-size: 20px;
 }
 
 td {
-  padding: 0 8px;
-  min-width: 10ch;
   text-align: center;
+  min-width: 10ch;
+  padding: 6px 12px;
+  border: 1px solid black;
+  border-radius: 6px;
 }
 
 .not-finished {
-  color: red;
+  color: white;
+  background-color: #dc3545;
 }
 
 .to-correct {
-  color: orange;
+  color: white;
+  background-color: #ffc107;
 }
 
 .done {
-  color: green;
+  color: white;
+  background-color: #28a745;
 }
