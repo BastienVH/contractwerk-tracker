@@ -5,7 +5,7 @@ import './styles.css';
 const body = document.querySelector('body');
 
 // Create a small list of students
-const studentNames = ['Franske', 'Joske', 'Marietteje'];
+const studentNames = ['Franske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske'];
 const students = [];
 
 for (const index in studentNames) {
