@@ -11,3 +11,15 @@ td {
   min-width: 10ch;
   text-align: center;
 }
+
+.not-finished {
+  color: red;
+}
+
+.to-correct {
+  color: orange;
+}
+
+.done {
+  color: green;
+}

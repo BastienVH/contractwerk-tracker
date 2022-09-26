@@ -47,6 +47,7 @@ function webView(students) {
         let value = students[j].tasks[i];
         let cell = document.createElement('td');
         cell.textContent = value;
+        setClass(cell, value);
         cell.setAttribute("data-student", j);
         cell.setAttribute('data-task', i);
         row.appendChild(cell);
@@ -54,7 +55,16 @@ function webView(students) {
       tBody.appendChild(row);
     }
   }
-  
+
+  function setClass(cell, value) {
+    if (value == 'niet klaar') {
+      cell.classList.add('not-finished');
+    } else if (value == 'verbeteren') {
+      cell.classList.add('to-correct');
+    } else {
+      cell.classList.add('done');
+    }
+  }
   table.appendChild(tBody);
   return table;
 }
