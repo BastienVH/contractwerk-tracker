@@ -9,6 +9,11 @@ function webView(students) {
   tHead.appendChild(tHeaderRow);
   table.appendChild(tHead);
   
+  // Store tasks header in table header
+  const tTaskHeaderCell = document.createElement('th');
+  tTaskHeaderCell.textContent = 'Taak';
+  tHeaderRow.appendChild(tTaskHeaderCell);
+
   //put names of students in table header
   for (let student in students) {
     const tHeaderCell = document.createElement('th');
@@ -43,6 +48,12 @@ function webView(students) {
   function drawTable () {
     for (let i = 1; i <= 10; i++){
       let row = document.createElement('tr');
+      // number each row
+      let numberCell = document.createElement('td');
+      numberCell.textContent = i;
+      numberCell.classList.add('tasknumber');
+      row.appendChild(numberCell);   
+      // add values of student tasks to row   
       for (let j = 0; j < students.length; j++) {
         let value = students[j].tasks[i];
         let cell = document.createElement('td');

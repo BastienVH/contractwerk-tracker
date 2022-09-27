@@ -22,6 +22,12 @@ td {
   cursor: pointer;
 }
 
+.tasknumber {
+  border: none;
+  margin: none;
+  cursor: auto;
+}
+
 .not-finished {
   color: white;
   background-color: #dc3545;
