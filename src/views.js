@@ -23,6 +23,7 @@ function webView(students) {
   
   // put content of each students tasks in table
   const tBody = document.createElement('tbody');
+  tBody.id = 'tbody';
   drawTable();
 
   
