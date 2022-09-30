@@ -26,20 +26,6 @@ for (const student in students) {
   students[student].tasks = Object.assign({}, defaultTasks);
 }
 
-function nextTaskValue(student, task) {
-  const value = students[student].tasks[task];
-  const currentIndex = taskValues.indexOf(value);
-  let nextIndex;
-
-  if (currentIndex == 2) {
-    nextIndex = 0;
-  } else {
-    nextIndex = currentIndex++;
-  }
-  // update the students task
-  students[student].tasks[task] = taskValues[nextIndex];
-}
-
 // put web interface on screen
 body.appendChild(webView(students));
 console.log(students);
