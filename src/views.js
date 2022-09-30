@@ -67,18 +67,18 @@ function webView(students) {
       tBody.appendChild(row);
     }
   }
-
-  function setClass(cell, value) {
-    if (value == 'niet klaar') {
-      cell.classList.add('not-finished');
-    } else if (value == 'verbeteren') {
-      cell.classList.add('to-correct');
-    } else {
-      cell.classList.add('done');
-    }
-  }
   table.appendChild(tBody);
   return table;
 }
 
-export {webView};
+function setClass(cell, value) {
+  if (value == 'niet klaar') {
+    cell.classList.add('not-finished');
+  } else if (value == 'verbeteren') {
+    cell.classList.add('to-correct');
+  } else if (value == 'klaar'){
+    cell.classList.add('done');
+  }
+}
+
+export {webView, setClass};

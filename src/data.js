@@ -1,3 +1,5 @@
+import { setClass } from './views';
+
 class data {
   
   //function to store current data in localStorage
@@ -32,15 +34,11 @@ class data {
       for (let columnNmb = 0; columnNmb < dataArray[rowNmb].length; columnNmb++) {
         // set cell value to retrieved value
         let value = dataArray[rowNmb][columnNmb];
-        // only changes content, doesn't change class
-        tableFields[rowNmb].children[columnNmb].textContent = value;
+        let cell = tableFields[rowNmb].children[columnNmb];
+        cell.textContent = value;
+        setClass(tableFields[rowNmb].children[columnNmb], value);
       }
     }
-       
-      // for every line in the table
-
-    // check if there is an item inside localStorage with that identifier
-    // if not: ??
   }
 }
 
