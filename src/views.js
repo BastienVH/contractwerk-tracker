@@ -1,4 +1,4 @@
-import { Student } from './models.js';
+import { dataStorage } from './index.js';
 
 function webView(students) {
 
@@ -36,6 +36,8 @@ function webView(students) {
     // redraw the (updated) table
     removeTable();
     drawTable();
+    //save the table
+    dataStorage.store(document.getElementById('tbody'));
   });
 
   function removeTable () {

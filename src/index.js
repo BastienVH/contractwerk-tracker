@@ -46,3 +46,5 @@ restoreBtn.addEventListener('click', () => {
   dataStorage.restore(document.getElementById('tbody'));
 })
 body.appendChild(restoreBtn);
+
+export {dataStorage};
