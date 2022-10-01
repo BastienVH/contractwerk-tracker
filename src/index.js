@@ -5,6 +5,9 @@ import './styles.css';
 
 const body = document.querySelector('body');
 
+let dataStorage = new data;
+
+
 // Create a small list of students
 const studentNames = ['Franske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske'];
 const students = [];
@@ -28,9 +31,7 @@ for (const student in students) {
 
 // put web interface on screen
 body.appendChild(webView(students));
-console.log(students);
-
-let dataStorage = new data;
+document.addEventListener('DOMContentLoaded', () => dataStorage.restore(document.getElementById('tbody')))
 
 // buttons to test storing and retrieving from localStorage
 let saveBtn = document.createElement('button');
