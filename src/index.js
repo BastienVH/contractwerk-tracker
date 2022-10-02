@@ -25,28 +25,30 @@ for (let i = 1; i <= 10; i++) {
   defaultTasks[i] = taskValues[0];
 }
 
-for (const student in students) {
-  students[student].tasks = {};
-  students[student].tasks = Object.assign({}, defaultTasks);
-}
+assignDefaultTasks();
 
 // put web interface on screen
 table1.displayTable();
 document.addEventListener('DOMContentLoaded', () => dataStorage.restoreStudents());
 
-// buttons to test storing and retrieving from localStorage
-let saveBtn = document.createElement('button');
-saveBtn.textContent = 'SAVE';
-saveBtn.addEventListener('click', () => {
+// reset button
+let resetBtn = document.createElement('button');
+resetBtn.textContent = 'Reset';
+resetBtn.classList.add('resetBtn');
+resetBtn.addEventListener('click', () => {
+  assignDefaultTasks();
   dataStorage.storeStudents();
+  table1.refreshTable();
 })
-body.appendChild(saveBtn);
+body.appendChild(resetBtn);
 
-let restoreBtn = document.createElement('button');
-restoreBtn.textContent = 'RESTORE';
-restoreBtn.addEventListener('click', () => {
-  dataStorage.restoreStudents();
-})
-body.appendChild(restoreBtn);
+function assignDefaultTasks() {
+  for (const student in students) {
+    if (!students[student].tasks) {
+      students[student].tasks = {};
+    }
+    students[student].tasks = Object.assign({}, defaultTasks); 
+  }
+}
 
 export {dataStorage, students, table1};
