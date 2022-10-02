@@ -1,54 +1,48 @@
-import { dataStorage } from './index.js';
+import { dataStorage, students } from './index.js';
+const body = document.querySelector('body');
 
-function webView(students) {
+class Table {
+  constructor(name) {
+    this.name = name;
+  }
 
-  // create table with header row to display everything in
-  const table = document.createElement('table');
-  const tHead = document.createElement('thead');
-  const tHeaderRow = document.createElement('tr');
-  tHead.appendChild(tHeaderRow);
-  table.appendChild(tHead);
-  
-  // Store tasks header in table header
-  const tTaskHeaderCell = document.createElement('th');
-  tTaskHeaderCell.textContent = 'Taak';
-  tHeaderRow.appendChild(tTaskHeaderCell);
+  displayTable() {
+    this.createEmptyTable();
+    this.fillHeader();
+    this.fillBody();
+    this.addClickEvent();
+  }
 
-  //put names of students in table header
-  for (let student in students) {
-    const tHeaderCell = document.createElement('th');
-    tHeaderCell.textContent = students[student].name;
-    tHeaderRow.appendChild(tHeaderCell);
+  createEmptyTable() {
+    const table = document.createElement('table');
+    const tHead = document.createElement('thead');
+    table.appendChild(tHead);
+    const tBody = document.createElement('tbody');
+    tBody.id = 'tbody';
+    table.append(tBody);
+    body.appendChild(table);
   }
   
-  // put content of each students tasks in table
-  const tBody = document.createElement('tbody');
-  tBody.id = 'tbody';
-  drawTable();
+  fillHeader() {
+    const tHead = document.querySelector('thead');
+    const tHeaderRow = document.createElement('tr');
+    tHead.appendChild(tHeaderRow);
 
-  
-  // watch for clicks in table
-  table.addEventListener('click', (e) => {
-    let target = e.target.closest('td');
-    let student = Number(target.dataset.student);
-    let task = Number(target.dataset.task);
-    students[student].nextTaskValue(task);
-    // redraw the (updated) table
-    removeTable();
-    drawTable();
-    //save the table
-    dataStorage.store(document.getElementById('tbody'));
-  });
+    // Store tasks header in table header
+    const tTaskHeaderCell = document.createElement('th');
+    tTaskHeaderCell.textContent = 'Taak';
+    tHeaderRow.appendChild(tTaskHeaderCell);
 
-  function removeTable () {
-    // remove tbody element
-    const tBody = document.querySelector('tbody');
-    while (tBody.children[0]) {
-      tBody.removeChild(tBody.children[0]);
+    //put names of students in table header
+    for (let student in students) {
+      const tHeaderCell = document.createElement('th');
+      tHeaderCell.textContent = students[student].name;
+      tHeaderRow.appendChild(tHeaderCell);
     }
   }
 
-  function drawTable () {
+  fillBody() {
+    const tBody = document.querySelector('tbody');
     for (let i = 1; i <= 10; i++){
       let row = document.createElement('tr');
       // number each row
@@ -69,8 +63,35 @@ function webView(students) {
       tBody.appendChild(row);
     }
   }
-  table.appendChild(tBody);
-  return table;
+
+  refreshTable() {
+    this.removeBody();
+    this.fillBody();
+  }
+
+  addClickEvent() {
+    const table = document.querySelector('table');
+    // watch for clicks in table
+    table.addEventListener('click', (e) => {
+      let target = e.target.closest('td');
+      let student = Number(target.dataset.student);
+      let task = Number(target.dataset.task);
+      students[student].nextTaskValue(task);
+      // redraw the (updated) table
+      this.removeBody();
+      this.fillBody();
+      //save the table
+      dataStorage.storeStudents();
+    });
+  }
+
+  removeBody () {
+    // remove tbody element
+    const tBody = document.querySelector('tbody');
+    while (tBody.children[0]) {
+      tBody.removeChild(tBody.children[0]);
+    }
+  }
 }
 
 function setClass(cell, value) {
@@ -83,4 +104,4 @@ function setClass(cell, value) {
   }
 }
 
-export {webView, setClass};
+export {Table, setClass};

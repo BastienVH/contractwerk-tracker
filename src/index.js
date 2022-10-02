@@ -1,15 +1,16 @@
 import { Student } from './models.js';
-import { webView } from './views.js';
+import { Table } from './views.js';
 import { data } from './data.js';
 import './styles.css';
 
 const body = document.querySelector('body');
 
 let dataStorage = new data;
+let table1 = new Table;
 
 
 // Create a small list of students
-const studentNames = ['Franske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske', 'Joske', 'Marietteje', 'Dingske'];
+const studentNames = [ 'Joske', 'Marietteje', 'Dingske', 'Jadyn', 'Odin', 'Larry', 'Kianna', 'Harper', 'Roderick', 'Cecilia', 'Alexander', 'Ferre'];
 const students = [];
 
 for (const index in studentNames) {
@@ -30,22 +31,22 @@ for (const student in students) {
 }
 
 // put web interface on screen
-body.appendChild(webView(students));
-document.addEventListener('DOMContentLoaded', () => dataStorage.restore(document.getElementById('tbody')))
+table1.displayTable();
+document.addEventListener('DOMContentLoaded', () => dataStorage.restoreStudents());
 
 // buttons to test storing and retrieving from localStorage
 let saveBtn = document.createElement('button');
 saveBtn.textContent = 'SAVE';
 saveBtn.addEventListener('click', () => {
-  dataStorage.store(document.getElementById('tbody'));
+  dataStorage.storeStudents();
 })
 body.appendChild(saveBtn);
 
 let restoreBtn = document.createElement('button');
 restoreBtn.textContent = 'RESTORE';
 restoreBtn.addEventListener('click', () => {
-  dataStorage.restore(document.getElementById('tbody'));
+  dataStorage.restoreStudents();
 })
 body.appendChild(restoreBtn);
 
-export {dataStorage};
+export {dataStorage, students, table1};
