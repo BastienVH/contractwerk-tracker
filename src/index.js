@@ -5,12 +5,24 @@ import './styles.css';
 
 const body = document.querySelector('body');
 
-let dataStorage = new data;
-let table1 = new Table;
-
+const dataStorage = new data();
+const table1 = new Table();
 
 // Create a small list of students
-const studentNames = [ 'Joske', 'Marietteje', 'Dingske', 'Jadyn', 'Odin', 'Larry', 'Kianna', 'Harper', 'Roderick', 'Cecilia', 'Alexander', 'Ferre'];
+const studentNames = [
+  'Joske',
+  'Marietteje',
+  'Dingske',
+  'Jadyn',
+  'Odin',
+  'Larry',
+  'Kianna',
+  'Harper',
+  'Roderick',
+  'Cecilia',
+  'Alexander',
+  'Ferre',
+];
 const students = [];
 
 for (const index in studentNames) {
@@ -18,7 +30,7 @@ for (const index in studentNames) {
 }
 
 // create default tasks object and add it to all students
-const defaultTasks = {}
+const defaultTasks = {};
 const taskValues = ['niet klaar', 'verbeteren', 'klaar'];
 
 for (let i = 1; i <= 10; i++) {
@@ -29,17 +41,19 @@ assignDefaultTasks();
 
 // put web interface on screen
 table1.displayTable();
-document.addEventListener('DOMContentLoaded', () => dataStorage.restoreStudents());
+document.addEventListener('DOMContentLoaded', () =>
+  dataStorage.restoreStudents()
+);
 
 // reset button
-let resetBtn = document.createElement('button');
+const resetBtn = document.createElement('button');
 resetBtn.textContent = 'Reset';
 resetBtn.classList.add('resetBtn');
 resetBtn.addEventListener('click', () => {
   assignDefaultTasks();
   dataStorage.storeStudents();
   table1.refreshTable();
-})
+});
 body.appendChild(resetBtn);
 
 function assignDefaultTasks() {
@@ -47,8 +61,8 @@ function assignDefaultTasks() {
     if (!students[student].tasks) {
       students[student].tasks = {};
     }
-    students[student].tasks = Object.assign({}, defaultTasks); 
+    students[student].tasks = { ...defaultTasks};
   }
 }
 
-export {dataStorage, students, table1};
+export { dataStorage, students, table1 };

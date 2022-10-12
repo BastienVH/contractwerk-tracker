@@ -2,12 +2,12 @@ class Student {
   constructor(name) {
     this.name = name;
   }
-  
+
   taskValues = ['niet klaar', 'verbeteren', 'klaar'];
 
   nextTaskValue(task) {
     // get current value of task
-    let currentValue = this.tasks[task];
+    const currentValue = this.tasks[task];
     // find index of current value in taskValues
     let currentValueIndex = this.taskValues.indexOf(currentValue);
     // put value of next value in task list at index task

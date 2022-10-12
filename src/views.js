@@ -1,4 +1,5 @@
 import { dataStorage, students } from './index.js';
+
 const body = document.querySelector('body');
 
 class Table {
@@ -22,7 +23,7 @@ class Table {
     table.append(tBody);
     body.appendChild(table);
   }
-  
+
   fillHeader() {
     const tHead = document.querySelector('thead');
     const tHeaderRow = document.createElement('tr');
@@ -33,8 +34,8 @@ class Table {
     tTaskHeaderCell.textContent = 'Taak';
     tHeaderRow.appendChild(tTaskHeaderCell);
 
-    //put names of students in table header
-    for (let student in students) {
+    // put names of students in table header
+    for (const student in students) {
       const tHeaderCell = document.createElement('th');
       tHeaderCell.textContent = students[student].name;
       tHeaderRow.appendChild(tHeaderCell);
@@ -43,20 +44,20 @@ class Table {
 
   fillBody() {
     const tBody = document.querySelector('tbody');
-    for (let i = 1; i <= 10; i++){
-      let row = document.createElement('tr');
+    for (let i = 1; i <= 10; i++) {
+      const row = document.createElement('tr');
       // number each row
-      let numberCell = document.createElement('td');
+      const numberCell = document.createElement('td');
       numberCell.textContent = i;
       numberCell.classList.add('tasknumber');
-      row.appendChild(numberCell);   
-      // add values of student tasks to row   
+      row.appendChild(numberCell);
+      // add values of student tasks to row
       for (let j = 0; j < students.length; j++) {
-        let value = students[j].tasks[i];
-        let cell = document.createElement('td');
+        const value = students[j].tasks[i];
+        const cell = document.createElement('td');
         cell.textContent = value;
         setClass(cell, value);
-        cell.setAttribute("data-student", j);
+        cell.setAttribute('data-student', j);
         cell.setAttribute('data-task', i);
         row.appendChild(cell);
       }
@@ -73,19 +74,19 @@ class Table {
     const table = document.querySelector('table');
     // watch for clicks in table
     table.addEventListener('click', (e) => {
-      let target = e.target.closest('td');
-      let student = Number(target.dataset.student);
-      let task = Number(target.dataset.task);
+      const target = e.target.closest('td');
+      const student = Number(target.dataset.student);
+      const task = Number(target.dataset.task);
       students[student].nextTaskValue(task);
       // redraw the (updated) table
       this.removeBody();
       this.fillBody();
-      //save the table
+      // save the table
       dataStorage.storeStudents();
     });
   }
 
-  removeBody () {
+  removeBody() {
     // remove tbody element
     const tBody = document.querySelector('tbody');
     while (tBody.children[0]) {
@@ -99,9 +100,9 @@ function setClass(cell, value) {
     cell.classList.add('not-finished');
   } else if (value == 'verbeteren') {
     cell.classList.add('to-correct');
-  } else if (value == 'klaar'){
+  } else if (value == 'klaar') {
     cell.classList.add('done');
   }
 }
 
-export {Table, setClass};
+export { Table, setClass };
